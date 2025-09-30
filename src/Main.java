@@ -1,4 +1,5 @@
 import PatronCommand.*;
+import PatronIterator.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -21,5 +22,19 @@ public class Main {
 
         controlador.setComando(certificado);
         controlador.ejecutarComando();
+
+        System.out.println("\n===============================================================================");
+        System.out.println("Ejercicio 3: Patrón Iterator.\n");
+
+        Alumno alumno = new Alumno("Juan Pérez");
+        alumno.inscribirCurso(new CursoIterador("Matemática I"));
+        alumno.inscribirCurso(new CursoIterador("Programación II"));
+        alumno.inscribirCurso(new CursoIterador("Bases de Datos"));
+
+        CursoIterator it = alumno.iterator();
+        System.out.println("Cursos inscritos por " + alumno.getNombre() + ":");
+        while (it.hasNext()) {
+            System.out.println("- " + it.next().getNombre());
+        }
     }
 }
