@@ -4,7 +4,7 @@ import PatronMediator.*;
 import PatronMemento.*;
 import PatronObserver.*;
 import PatronState.*;
-import PatronStrategy.AlumnoStrategy;
+import PatronStrategy.*;
 
 public class Main {
     public static void main(String[] args) {
