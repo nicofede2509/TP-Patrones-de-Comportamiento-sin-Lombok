@@ -2,7 +2,6 @@ package PatronMediator;
 
 import java.util.ArrayList;
 import java.util.List;
-
 public class ChatRoom implements ChatMediator{
     private List<Usuario> usuarios = new ArrayList<>();
 

@@ -2,6 +2,8 @@ import PatronCommand.*;
 import PatronIterator.*;
 import PatronMediator.*;
 import PatronMemento.*;
+import PatronObserver.*;
+import PatronState.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -80,7 +82,51 @@ public class Main {
 
         examen.restore(historial.deshacer());
         examen.mostrarRespuestas();
+
+        System.out.println("\n===============================================================================");
+        System.out.println("Ejercicio 6: Patrón Observer.\n");
+
+        //Instanciar Curso
+        CursoObserver desarrolloSoftware = new CursoObserver("Desarrollo de Software");
+        //Instanciar Alumnos
+        AlumnoObserver ana = new AlumnoObserver("Ana");
+        AlumnoObserver bruno = new AlumnoObserver("Bruno");
+        AlumnoObserver caro = new AlumnoObserver("Caro");
+
+        //Meter a alumnos al curso
+        desarrolloSoftware.suscribir(ana);
+        desarrolloSoftware.suscribir(bruno);
+        desarrolloSoftware.suscribir(caro);
+
+        //Cambio de horario y notificacion
+        desarrolloSoftware.cambiarHorario("Lunes 18:00");
+        desarrolloSoftware.nuevoAviso("Examen parcial el 15/10");
+
+        // Bruno se desuscribe
+        desarrolloSoftware.desuscribir(bruno);
+
+        //Cambio de horario y notificacion
+        desarrolloSoftware.cambiarHorario("Miércoles 19:30");
+        desarrolloSoftware.nuevoAviso("Trabajos prácticos: fecha límite 22/10");
+
+
+        System.out.println("\n===============================================================================");
+        System.out.println("Ejercicio 7: Patrón State.\n");
+
+        Inscripcion nuevaInscripcion = new Inscripcion();
+        System.out.println("Estado inicial: " + nuevaInscripcion.estadoActual());
+
+        nuevaInscripcion.inscribir();        // EnEspera -> Inscrito
+        System.out.println("Estado: " + nuevaInscripcion.estadoActual());
+
+        nuevaInscripcion.ponerEnEspera();    // Inscrito -> EnEspera
+        System.out.println("Estado: " + nuevaInscripcion.estadoActual());
+
+        nuevaInscripcion.cancelar();         // EnEspera -> Cancelado
+        System.out.println("Estado: " + nuevaInscripcion.estadoActual());
+
+        nuevaInscripcion.inscribir();        // No permitido desde Cancelado
+        System.out.println("Estado final: " + nuevaInscripcion.estadoActual());
+
     }
-
-
 }
