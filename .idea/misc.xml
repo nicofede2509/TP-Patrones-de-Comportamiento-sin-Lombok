@@ -1,15 +1,5 @@
-<<<<<<< HEAD
 <project version="4">
   <component name="ProjectRootManager" version="2" languageLevel="JDK_22" default="true" project-jdk-name="openjdk-22" project-jdk-type="JavaSDK">
-=======
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-<<<<<<< HEAD
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_22" default="true" project-jdk-name="openjdk-22" project-jdk-type="JavaSDK">
-=======
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_23" default="true" project-jdk-name="23" project-jdk-type="JavaSDK">
->>>>>>> 8f22601 (Patron Iterador)
->>>>>>> e8863abfaa2382b55c5661fb611edb33c01fca37
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>

@@ -1,8 +1,8 @@
 package PatronMediator;
 
-public class Profesor extends Usuario{
+public class ProfesorMediator extends Usuario{
 
-    public Profesor(ChatMediator mediador, String nombre) {
+    public ProfesorMediator(ChatMediator mediador, String nombre) {
         super(mediador, nombre);
     }
 

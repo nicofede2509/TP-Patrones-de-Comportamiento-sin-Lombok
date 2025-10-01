@@ -1,3 +1,7 @@
+import java.util.Arrays;
+import java.util.List;
+
+import PatronCOR.*;
 import PatronCommand.*;
 import PatronIterator.*;
 import PatronMediator.*;
@@ -5,11 +9,32 @@ import PatronMemento.*;
 import PatronObserver.*;
 import PatronState.*;
 import PatronStrategy.*;
+import PatronVisitor.*;
 
 public class Main {
     public static void main(String[] args) {
+        System.out.println("\n===============================================================================");
+        System.out.println("Ejercicio 1: Patrón Chain of responibility.\n");
 
-        //Patrón Command
+        HandlerCOR asistente = new Asistente();
+        HandlerCOR profesor = new ProfesorCOR();
+        HandlerCOR coordinador = new Coordinador();
+
+        // Armar la cadena
+        asistente.setNext(profesor);
+        profesor.setNext(coordinador);
+
+        // Probar solicitudes
+        Solicitud s1 = new Solicitud(1, "Consulta simple de horarios");
+        Solicitud s2 = new Solicitud(2, "Consulta sobre tema de examen");
+        Solicitud s3 = new Solicitud(3, "Problema con la inscripción");
+        Solicitud s4 = new Solicitud(4, "Solicitud fuera de alcance");
+
+        asistente.handler(s1);
+        asistente.handler(s2);
+        asistente.handler(s3);
+        asistente.handler(s4);
+
         System.out.println("\n===============================================================================");
         System.out.println("Ejercicio 2: Patrón Command.\n");
         Curso curso1 = new Curso();
@@ -47,17 +72,17 @@ public class Main {
 
         ChatMediator sala = new ChatRoom();
 
-        Usuario profesor = new Profesor(sala, "Pedro");
+        Usuario profesorMediador = new ProfesorMediator(sala, "Pedro");
         Usuario alumno1 = new AlumnoMediator(sala, "Nicolás");
         Usuario alumno2 = new AlumnoMediator(sala, "Tiago");
         Usuario alumno3 = new AlumnoMediator(sala, "Antonio");
 
-        sala.agregarUsuario(profesor);
+        sala.agregarUsuario(profesorMediador);
         sala.agregarUsuario(alumno1);
         sala.agregarUsuario(alumno2);
         sala.agregarUsuario(alumno3);
 
-        profesor.enviar("Buen día alumnos!!");
+        profesorMediador.enviar("Buen día alumnos!!");
         alumno1.enviar("Hola profe, buenos días");
         alumno2.enviar("Profe, tengo una duda");
         alumno3.enviar("Yo también profe");
@@ -144,5 +169,35 @@ public class Main {
         juan.setEstrategia(new PatronStrategy.ExamenExtra(10));
         juan.mostrarNotaFinal(); // Examen Extra
 
+        System.out.println("\n===============================================================================");
+        System.out.println("Ejercicio 9: Patrón Template Method. \n");
+
+        PatronTemplateMethod.ReporteAcademico reporteCurso =
+                new PatronTemplateMethod.ReporteCurso("Programación II", 35);
+        reporteCurso.generarReporte();
+
+        PatronTemplateMethod.ReporteAcademico reporteAlumno =
+                new PatronTemplateMethod.ReporteAlumno("Juan Pérez", 8.5);
+        reporteAlumno.generarReporte();
+
+        System.out.println("\n===============================================================================");
+        System.out.println("Ejercicio 10: Patrón Visitor. \n");
+
+
+        List<AlumnoVisitor> alumnos = Arrays.asList(
+                new AlumnoRegular("Pedro Torres", 1000.0),
+                new AlumnoBecado("Mariana Soto", 1000.0, 40.0),
+                new AlumnoRegular("Laura García", 1500.0)
+        );
+
+       
+        Visitor aplicadorDeBecas = new AplicarBeca();
+        System.out.println("");
+        System.out.println("VISITOR:");
+        for (AlumnoVisitor alumnoVisitor : alumnos) {
+            System.out.println("");
+            alumnoVisitor.aceptar(aplicadorDeBecas);
+        }
+        System.out.println("");
     }
 }
