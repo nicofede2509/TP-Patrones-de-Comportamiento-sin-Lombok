@@ -4,6 +4,7 @@ import PatronMediator.*;
 import PatronMemento.*;
 import PatronObserver.*;
 import PatronState.*;
+import PatronStrategy.AlumnoStrategy;
 
 public class Main {
     public static void main(String[] args) {
@@ -127,6 +128,21 @@ public class Main {
 
         nuevaInscripcion.inscribir();        // No permitido desde Cancelado
         System.out.println("Estado final: " + nuevaInscripcion.estadoActual());
+
+        System.out.println("\n===============================================================================");
+        System.out.println("Ejercicio 8: Patrón Strategy. \n");
+        AlumnoStrategy juan = new AlumnoStrategy("Juan", new PatronStrategy.PromedioSimple());
+        juan.agregarNota(7);
+        juan.agregarNota(9);
+        juan.agregarNota(5);
+
+        juan.mostrarNotaFinal(); // Promedio Simple
+
+        juan.setEstrategia(new PatronStrategy.PromedioPonderado(java.util.Arrays.asList(0.2, 0.3, 0.5)));
+        juan.mostrarNotaFinal(); // Promedio Ponderado
+
+        juan.setEstrategia(new PatronStrategy.ExamenExtra(10));
+        juan.mostrarNotaFinal(); // Examen Extra
 
     }
 }
