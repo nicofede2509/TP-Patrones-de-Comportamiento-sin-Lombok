@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/TP_comportamientos.iml" filepath="$PROJECT_DIR$/TP_comportamientos.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/TP_comportamiento.iml" filepath="$PROJECT_DIR$/TP_comportamiento.iml" />
+>>>>>>> e8863abfaa2382b55c5661fb611edb33c01fca37
     </modules>
   </component>
 </project>
