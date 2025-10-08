@@ -9,6 +9,7 @@ import PatronMemento.*;
 import PatronObserver.*;
 import PatronState.*;
 import PatronStrategy.*;
+import PatronTemplateMethod.*;
 import PatronVisitor.*;
 
 public class Main {
@@ -56,7 +57,7 @@ public class Main {
         System.out.println("\n===============================================================================");
         System.out.println("Ejercicio 3: Patrón Iterator.\n");
 
-        Alumno alumno = new Alumno("Juan Pérez");
+        AlumnoIterator alumno = new AlumnoIterator("Juan Pérez");
         alumno.inscribirCurso(new CursoIterador("Matemática I"));
         alumno.inscribirCurso(new CursoIterador("Programación II"));
         alumno.inscribirCurso(new CursoIterador("Bases de Datos"));
@@ -172,12 +173,12 @@ public class Main {
         System.out.println("\n===============================================================================");
         System.out.println("Ejercicio 9: Patrón Template Method. \n");
 
-        PatronTemplateMethod.ReporteAcademico reporteCurso =
-                new PatronTemplateMethod.ReporteCurso("Programación II", 35);
+        ReporteAcademico reporteCurso =
+                new ReporteCurso("Programación II", 35);
         reporteCurso.generarReporte();
 
-        PatronTemplateMethod.ReporteAcademico reporteAlumno =
-                new PatronTemplateMethod.ReporteAlumno("Juan Pérez", 8.5);
+        ReporteAcademico reporteAlumno =
+                new ReporteAlumno("Juan Pérez", 8.5);
         reporteAlumno.generarReporte();
 
         System.out.println("\n===============================================================================");
@@ -192,8 +193,7 @@ public class Main {
 
        
         Visitor aplicadorDeBecas = new AplicarBeca();
-        System.out.println("");
-        System.out.println("VISITOR:");
+        System.out.println("\nVISITOR:");
         for (AlumnoVisitor alumnoVisitor : alumnos) {
             System.out.println("");
             alumnoVisitor.aceptar(aplicadorDeBecas);

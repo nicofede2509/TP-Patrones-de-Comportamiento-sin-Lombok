@@ -12,7 +12,7 @@ public abstract class ReporteAcademico {
     }
 
     protected void generarPie() {
-        System.out.println("===== Fin del Reporte =====\n");
+        System.out.println("===== Fin del Reporte =====");
     }
 
     protected abstract void generarContenido();

@@ -3,11 +3,11 @@ package PatronIterator;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Alumno {
+public class AlumnoIterator {
     private String nombre;
     private List<CursoIterador> cursos = new ArrayList<>();
 
-    public Alumno(String nombre) {
+    public AlumnoIterator(String nombre) {
         this.nombre = nombre;
     }
 
